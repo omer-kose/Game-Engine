@@ -1,0 +1,8 @@
+bin/
+obj/
+*.spv
+docs/
+
+*.vim
+
+*compile_flags.txt
