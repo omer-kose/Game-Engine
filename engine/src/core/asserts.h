@@ -22,7 +22,7 @@ KAPI void report_assertion_failure(const char* expression, const char* message, 
 // # operator in the function (#expr) is called stringizing operator in C. It basically converts the arg into a string
 #define KASSERT(expr)                                                \
     {                                                                \
-        if (expr)                                                    \
+        if(expr)                                                     \
         {                                                            \
         }                                                            \
         else                                                         \
@@ -35,7 +35,7 @@ KAPI void report_assertion_failure(const char* expression, const char* message, 
 
 #define KASSERT_MSG(expr, message)                                        \
     {                                                                     \
-        if (expr)                                                         \
+        if(expr)                                                          \
         {                                                                 \
         }                                                                 \
         else                                                              \
@@ -49,7 +49,7 @@ KAPI void report_assertion_failure(const char* expression, const char* message, 
 #ifdef _DEBUG
 #define KASSERT_DEBUG(expr)                                          \
     {                                                                \
-        if (expr)                                                    \
+        if(expr)                                                     \
         {                                                            \
         }                                                            \
         else                                                         \
