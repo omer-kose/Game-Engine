@@ -8,7 +8,7 @@ typedef struct platform_state
 } platform_state;
 
 
-KAPI b8 platform_startup
+b8 platform_startup
 (
     platform_state* plat_state,
     const char* application_name,
@@ -18,12 +18,13 @@ KAPI b8 platform_startup
     i32 height
 );
 
-KAPI void platform_shutdown(platform_state* plat_state);
+void platform_shutdown(platform_state* plat_state);
 
-KAPI b8 platform_pump_messages(platform_state* plat_state);
+b8 platform_pump_messages(platform_state* plat_state);
 
-void* platform_allocate(u64 size, b8 aligned);
-void platform_free(void* block, b8 aligned);
+// TODO: Temporary these should not be exported into engine dll
+KAPI void* platform_allocate(u64 size, b8 aligned);
+KAPI void platform_free(void* block, b8 aligned);
 void* platform_zero_memory(void* block, u64 size);
 void* platform_copy_memory(void* dest, const void* source, u64 size);
 void* platform_set_memory(void* dest, i32 value, u64 size);
