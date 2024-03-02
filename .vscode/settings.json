@@ -1,9 +1,5 @@
 {
     "files.associations": {
-        "test.h": "c",
-        "logger.h": "c",
-        "assert.h": "c",
-        "application.h": "c",
-        "asserts.h": "c"
+        "array": "cpp"
     }
 }
