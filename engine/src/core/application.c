@@ -6,6 +6,7 @@
 #include "platform/platform.h"
 #include "core/kmemory.h"
 #include "core/event.h"
+#include "core/input.h"
 
 typedef struct application_state 
 {
@@ -21,6 +22,10 @@ typedef struct application_state
 static b8 initialized = FALSE;
 static application_state app_state;
 
+// Event handlers
+b8 application_on_event(u16 code, void* sender, void* listener_inst, event_context context);
+b8 application_on_key(u16 code, void* sender, void* listener_inst, event_context context);
+
 b8 application_create(game* game_inst)
 {  
     if (initialized) 
@@ -33,6 +38,7 @@ b8 application_create(game* game_inst)
 
     // Initialize subsystems
     initialize_logging();
+    input_initialize();
 
     // TODO: Remove this
     KFATAL("A test message: %f", 3.14f);
@@ -50,6 +56,10 @@ b8 application_create(game* game_inst)
         KERROR("Event system failed initialization. Application cannot continue.");
         return FALSE;
     }
+
+    event_register(EVENT_CODE_APPLICATION_QUIT, 0, application_on_event);
+    event_register(EVENT_CODE_KEY_PRESSED, 0, application_on_key);
+    event_register(EVENT_CODE_KEY_RELEASED, 0, application_on_key);
 
     if(!platform_startup(
         &app_state.platform, 
@@ -103,14 +113,82 @@ b8 application_run()
                 app_state.is_running = FALSE;
                 break;
             }
+
+            // NOTE: Input update/state copying should always be handled
+            // after any input should be recorded; I.E. before this line.
+            // As a safety, input is the last thing to be updated before
+            // this frame ends.
+            input_update(0);
         }
     }
 
     app_state.is_running = FALSE;
 
+    // Shutdown the event system
+    event_unregister(EVENT_CODE_APPLICATION_QUIT, 0, application_on_event);
+    event_unregister(EVENT_CODE_KEY_PRESSED, 0, application_on_key);
+    event_unregister(EVENT_CODE_KEY_RELEASED, 0, application_on_key);
     event_shutdown();
+    
+    input_shutdown();
 
     platform_shutdown(&app_state.platform);
 
     return TRUE;
+}
+
+b8 application_on_event(u16 code, void* sender, void* listener_inst, event_context context) 
+{
+    switch(code) 
+    {
+        case EVENT_CODE_APPLICATION_QUIT: 
+        {
+            KINFO("EVENT_CODE_APPLICATION_QUIT recieved, shutting down.\n");
+            app_state.is_running = FALSE;
+            return TRUE;
+        }
+        break;
+    }
+
+    return FALSE;
+}
+
+b8 application_on_key(u16 code, void* sender, void* listener_inst, event_context context) 
+{
+    if(code == EVENT_CODE_KEY_PRESSED) 
+    {
+        u16 key_code = context.data.u16[0];
+        if(key_code == KEY_ESCAPE) 
+        {
+            // NOTE: Technically firing an event to itself, but there may be other listeners.
+            event_context data = {};
+            event_fire(EVENT_CODE_APPLICATION_QUIT, 0, data);
+
+            // Block anything else from processing this.
+            return TRUE;
+        } 
+        else if(key_code == KEY_A) 
+        {
+            // Example on checking for a key
+            KDEBUG("Explicit - A key pressed!");
+        } 
+        else
+        {
+            KDEBUG("'%c' key pressed in window.", key_code);
+        }
+    } 
+    else if(code == EVENT_CODE_KEY_RELEASED) 
+    {
+        u16 key_code = context.data.u16[0];
+        if(key_code == KEY_B) 
+        {
+            // Example on checking for a key
+            KDEBUG("Explicit - B key released!");
+        } 
+        else
+        {
+            KDEBUG("'%c' key released in window.", key_code);
+        }
+    }
+    return FALSE;
 }
