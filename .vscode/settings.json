@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "array": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "defines.h": "c"
     }
 }
