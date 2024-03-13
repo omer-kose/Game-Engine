@@ -34,7 +34,7 @@ void vulkan_renderpass_create
 
     attachment_descriptions[0] = color_attachment;
 
-    // We also need an attachment reference, which specifies to subpass what attachment we are going to be using for which attachment.
+    // We also need an attachment reference, which specifies to subpass, what attachment we defined corresponds to specific required attachment in the subpass.
     VkAttachmentReference color_attachment_reference;
     color_attachment_reference.attachment = 0;  // Attachment description array index (index matches with the array of attachments we created)
     color_attachment_reference.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
