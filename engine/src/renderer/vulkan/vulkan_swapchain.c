@@ -91,6 +91,9 @@ void vulkan_swapchain_present
         KFATAL("Failed to present swap chain image!");
     }
 
+    // Increment (and wrap around) the index
+    context->current_frame = (context->current_frame + 1) % (swapchain->max_frames_in_flight);
+
 }
 
 

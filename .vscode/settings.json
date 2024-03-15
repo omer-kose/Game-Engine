@@ -2,6 +2,7 @@
     "files.associations": {
         "array": "cpp",
         "sstream": "cpp",
-        "defines.h": "c"
+        "defines.h": "c",
+        "darray.h": "c"
     }
 }
