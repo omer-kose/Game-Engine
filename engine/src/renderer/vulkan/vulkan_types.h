@@ -130,6 +130,14 @@ typedef struct vulkan_context
     // The framebuffer's current height
     u32 framebuffer_height;
 
+    // Current generation of framebuffer size. If it does not match framebuffer_size_last_generation,
+    // a new one should be generated.
+    u64 framebuffer_size_generation;
+
+    // The generation of the framebuffer when it was last created. Set to framebuffer_size_generation
+    // when updated.
+    u64 framebuffer_size_last_generation;
+
     VkInstance instance;
     VkAllocationCallbacks* allocator;
     VkSurfaceKHR surface;
@@ -155,7 +163,7 @@ typedef struct vulkan_context
     u32 in_flight_fence_count;
     vulkan_fence* in_flight_fences;
 
-    // Holds pointers to fences which exist and are owned elsewhere.
+    // Holds pointers to fences which exist and are owned elsewhere. Used to ensure whether the image is being used by the previous frames or not
     vulkan_fence** images_in_flight;
     
     u32 image_index; // index of the image that we are currently using
