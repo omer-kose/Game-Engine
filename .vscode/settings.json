@@ -3,7 +3,9 @@
         "array": "cpp",
         "sstream": "cpp",
         "defines.h": "c",
-        "darray.h": "c"
+        "darray.h": "c",
+        "xiosbase": "cpp",
+        "ios": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
