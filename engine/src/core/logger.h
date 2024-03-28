@@ -24,8 +24,16 @@ typedef enum log_level
 } log_level;
 
 
-b8 initialize_logging();
-void shutdown_logging();
+/**
+ * @brief Initializes logging system. Call twice; once with state = 0 to get required memory size,
+ * then a second time passing allocated memory to state.
+ * 
+ * @param memory_requirement A pointer to hold the required memory size of internal state.
+ * @param state 0 if just requesting memory requirement, otherwise allocated block of memory.
+ * @return b8 True on success; otherwise false.
+ */
+b8 initialize_logging(u64* memory_requirement, void* state);
+void shutdown_logging(void* state);
 
 /*
     ... is called variadic arguments. It works in the same way it works in printf.
