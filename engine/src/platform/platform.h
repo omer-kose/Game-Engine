@@ -2,15 +2,10 @@
 
 #include "defines.h"
 
-typedef struct platform_state
-{
-    void* internal_state; // The type of this will be determined on the particular implementation in a C file.
-} platform_state;
-
-
-b8 platform_startup
+b8 platform_system_startup
 (
-    platform_state* plat_state,
+    u64* memory_requirement,
+    void* state,
     const char* application_name,
     i32 x,
     i32 y,
@@ -18,9 +13,9 @@ b8 platform_startup
     i32 height
 );
 
-void platform_shutdown(platform_state* plat_state);
+void platform_system_shutdown(void* plat_state);
 
-b8 platform_pump_messages(platform_state* plat_state);
+b8 platform_pump_messages();
 
 
 void* platform_allocate(u64 size, b8 aligned);

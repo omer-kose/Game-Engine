@@ -6,7 +6,8 @@
         "darray.h": "c",
         "xiosbase": "cpp",
         "ios": "cpp",
-        "kmemory.h": "c"
+        "kmemory.h": "c",
+        "renderer_types.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
