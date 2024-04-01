@@ -7,7 +7,19 @@
         "xiosbase": "cpp",
         "ios": "cpp",
         "kmemory.h": "c",
-        "renderer_types.h": "c"
+        "renderer_types.h": "c",
+        "vulkan_renderpass.h": "c",
+        "vulkan_command_buffer.h": "c",
+        "vulkan_platform.h": "c",
+        "vulkan_types.h": "c",
+        "asserts.h": "c",
+        "vulkan_swapchain.h": "c",
+        "vulkan_device.h": "c",
+        "vulkan_framebuffer.h": "c",
+        "vulkan_fence.h": "c",
+        "vulkan_utils.h": "c",
+        "vulkan_backend.h": "c",
+        "renderer_backend.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
