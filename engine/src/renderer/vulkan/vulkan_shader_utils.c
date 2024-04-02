@@ -54,7 +54,7 @@ b8 create_shader_module
         &shader_stages[stage_index].handle
     ));
 
-    // Shader stage info
+    // Shader stage info to be later used while creating the pipeline
     kzero_memory(&shader_stages[stage_index].shader_stage_create_info, sizeof(VkPipelineShaderStageCreateInfo));
     shader_stages[stage_index].shader_stage_create_info.sType = VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO;
     shader_stages[stage_index].shader_stage_create_info.stage = shader_stage_flag;

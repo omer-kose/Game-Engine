@@ -247,6 +247,9 @@ void vulkan_renderer_backend_shutdown(renderer_backend* backend)
 
     // Destroying resources in the opposite order that we created them.
 
+    // Shaders
+    vulkan_object_shader_destroy(&context, &context.object_shader);
+
     // Sync objects
     for(u8 i = 0; i < context.swapchain.max_frames_in_flight; ++i) 
     {
