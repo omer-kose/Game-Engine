@@ -12,7 +12,7 @@ b8 vulkan_buffer_create
     vulkan_context* context,
     u64 size,
     VkBufferUsageFlagBits usage,
-    u32 memory_property_flags,
+    u32 memory_property_flags, 
     b8 bind_on_create,
     vulkan_buffer* out_buffer
 )
