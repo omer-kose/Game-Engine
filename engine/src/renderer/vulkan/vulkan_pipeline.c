@@ -90,7 +90,8 @@ b8 vulkan_graphics_pipeline_create
     dynamic_state_create_info.dynamicStateCount = dynamic_state_count;
     dynamic_state_create_info.pDynamicStates = dynamic_states;
 
-    // Vertex input
+    // Vertex input (Specifies how to extract vertex data from buffers)
+    // Note, that if there are multiple vertex buffers in a pipeline, for each of them a VkVertexInputBindingDescription must be defined
     VkVertexInputBindingDescription binding_description;
     binding_description.binding = 0;
     binding_description.stride = sizeof(vertex_3d);

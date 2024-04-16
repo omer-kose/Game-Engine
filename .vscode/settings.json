@@ -19,7 +19,8 @@
         "vulkan_fence.h": "c",
         "vulkan_utils.h": "c",
         "vulkan_backend.h": "c",
-        "renderer_backend.h": "c"
+        "renderer_backend.h": "c",
+        "math_types.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
