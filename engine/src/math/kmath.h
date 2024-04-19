@@ -797,6 +797,9 @@ KINLINE mat4 mat4_identity()
  * @param matrix_0 The first matrix to be multiplied.
  * @param matrix_1 The second matrix to be multiplied.
  * @return The result of the matrix multiplication.
+ * 
+ * Note that the order of multiplication is the inverse of the one we generally use in math. So, a transformation
+ * formed with mat4_mul(A, B) means first A is applied then B not the other way around like it used to be in math notation
  */
 KINLINE mat4 mat4_mul(mat4 matrix_0, mat4 matrix_1) 
 {
