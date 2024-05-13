@@ -21,7 +21,8 @@
         "vulkan_backend.h": "c",
         "renderer_backend.h": "c",
         "math_types.h": "c",
-        "renderer_frontend.h": "c"
+        "renderer_frontend.h": "c",
+        "resource_types.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
