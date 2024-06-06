@@ -22,7 +22,11 @@
         "renderer_backend.h": "c",
         "math_types.h": "c",
         "renderer_frontend.h": "c",
-        "resource_types.h": "c"
+        "resource_types.h": "c",
+        "xmemory": "c",
+        "logger.h": "c",
+        "vulkan_shader_utils.h": "c",
+        "vulkan_buffer.h": "c"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
